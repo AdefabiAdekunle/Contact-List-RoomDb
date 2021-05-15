@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         builder.setView(view)
 
         val name = view.findViewById<TextView>(R.id.nameEt)
-        val no = view.findViewById<TextView>(R.id.numberEt)
-        val saveBtn = view.findViewById<Button>(R.id.btnSave)
+        val no = view.findViewById<TextView>(R.id.passwordEt)
+        val saveBtn = view.findViewById<Button>(R.id.btnLogin)
 
        no.addTextChangedListener(object:TextWatcher{
            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
