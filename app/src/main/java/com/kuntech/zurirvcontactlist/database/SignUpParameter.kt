@@ -6,8 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName="sign_up_parameter_table")
 data class SignUpParameter(
-    @PrimaryKey(autoGenerate = true)
-    var userId:Long = 0L,
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "full_name_user")
     var fullNameUser: String,
     @ColumnInfo(name = "email_user")

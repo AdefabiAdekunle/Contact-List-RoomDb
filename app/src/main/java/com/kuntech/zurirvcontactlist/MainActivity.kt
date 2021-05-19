@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         val view = layoutInflater.inflate(R.layout.add_contact_dialogue,null)
         builder.setView(view)
 
-        val name = view.findViewById<TextView>(R.id.nameEt)
+        val name = view.findViewById<TextView>(R.id.emailEt)
         val no = view.findViewById<TextView>(R.id.passwordEt)
         val saveBtn = view.findViewById<Button>(R.id.btnLogin)
 

@@ -9,9 +9,8 @@ import androidx.room.Query
 interface SignUpDatabaseDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(details: SignUpParameter)
+    suspend fun insert(details: SignUpParameter)
 
     @Query("SELECT * FROM sign_up_parameter_table WHERE email_user = :email AND password_user =:password")
     fun get(email:String,password:String):List<SignUpParameter>
-
 }
