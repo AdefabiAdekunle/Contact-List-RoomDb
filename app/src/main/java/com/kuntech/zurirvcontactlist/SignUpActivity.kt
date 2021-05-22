@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import com.kuntech.zurirvcontactlist.database.SignUpAndLoginRepository
 import com.kuntech.zurirvcontactlist.database.SignUpDatabase
 import com.kuntech.zurirvcontactlist.database.SignUpDatabaseDao
 import com.kuntech.zurirvcontactlist.database.SignUpParameter
@@ -17,6 +18,7 @@ import kotlinx.coroutines.launch
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
+    private lateinit var repository: SignUpAndLoginRepository
    // private lateinit var dao: SignUpDatabaseDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +29,7 @@ class SignUpActivity : AppCompatActivity() {
 
 
          val dao= SignUpDatabase.getInstance(this).signUpDatabaseDao
+        repository = SignUpAndLoginRepository(this)
 
         binding.btnSignup.setOnClickListener {
 
@@ -36,7 +39,8 @@ class SignUpActivity : AppCompatActivity() {
 
             if(fullName.isNotEmpty() &&email.isNotEmpty() && password.isNotEmpty()){
                 lifecycleScope.launch {
-            dao.insert(SignUpParameter(fullName,email,password))
+            //dao.insert(SignUpParameter(fullName,email,password))
+                    repository.insert(SignUpParameter(fullName,email,password))
                }
                 Toast.makeText(this, "SignUp successful", Toast.LENGTH_SHORT)
                 .show()
