@@ -28,8 +28,8 @@ class LoginActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             val email = binding.emailEt.text.toString()
             val password = binding.passwordEt.text.toString()
-            var resultInfo = ""
-             CoroutineScope(Dispatchers.IO).launch{resultInfo = dao.get(email,password).toString()
+            var resultInfo: List<SignUpParameter>
+             CoroutineScope(Dispatchers.IO).launch{resultInfo = dao.get(email,password)
 
                  withContext(Dispatchers.Main){
                      if(email.isNotEmpty() && password.isNotEmpty()){
@@ -46,8 +46,8 @@ class LoginActivity : AppCompatActivity() {
 
         }
     }
-    private fun intentOperation(resultInfo:String){
-        if( resultInfo.length>3){
+    private fun intentOperation(resultInfo:List<SignUpParameter>){
+        if(resultInfo.size==1){
             Intent(this,ContactCategory::class.java).also {
                 startActivity(it)
             }
